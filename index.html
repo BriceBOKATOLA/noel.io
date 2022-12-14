@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <title>Souhaits de Rodson...</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/saison.js"></script>
+  
+</head>
+
+<body>
+    <div id="snowflakeContainer">
+        <span class="snowflake"></span>
+        <div class="banner"> 
+
+
+    <div class="background">
+        <div class="texte-defilant">
+            <marquee>
+                 
+                 « <i>J'ai versé 365 Jours de bonheur, de joie, d'amitié, de santé, de prospérité, d'amour (...). Fais-en bonne usage !</i> »
+                 « <i>Que ce Noël soit l'aube d'une nouvelle année remplie de bonheur !</i> »
+                 « <i>Je souhaite que tu vives le moment présent avec confiance et optimisme, que tu accroches un sourire à tes lèvres à chaque instant, et que tu regardes le futur avec bienveillance car de merveilleux moments t'attendent !</i> »
+                 « <i> Profitant de l'aube d'une nouvelle année, je vous souhaite ainsi qu'à tous vos proches, mes voeux les meilleurs pour que votre noël soit plein de joie, riche en rire et que votre nouvelle année soit remplie de bonheur !</i> »
+                « <i>Tout comme l'étoile dorée illumine le sapin, je vous souhaite ainsi qu'à vos proches, mes voeux les meilleurs pour que votre noël soit plein de joie, de rire et que votre nouvelle année soit remplie de bonheur. Un chaleureux et  joyeux noël, et une bonne et heureuse année 2023.</i> »  
+                « <i>Acceptez du fond du coeur nos voeux les plus chaleureux pour une année exceptionnelle !</i> »
+               « <i>Au crépuscule de cette année 2022, et à l'aube de l'année 2023, je te souhaite 365 nouveaux jours de bonheurs, de joie, de santé mais aussi de prospérité !</i> »
+               <!-- « <i><p>Augmentez le Volume pour une bonne immersion</p> </i> » -->
+                <!-- Rodson EBANGA -->
+            </marquee>
+            </div>
+           
+        <div class="popup">
+            <button id="close">&times;</button>
+            <h2>Un joyeux noël, et une bonne et heureuse année 2023.</h2>
+            <p>
+              Profitant de l'aube d'une nouvelle année, je vous souhaite ainsi qu'à tous vos proches, mes voeux les meilleurs pour que votre noël soit plein de joie, riche en rire et que votre nouvelle année soit remplie de bonheur.
+             <br> Je m'en tiens trop heureux, et mon âme est ravie.
+             <br>  
+                <br/>
+            </p>
+            <a>Rodson EBANGA</a>
+        </div>
+    </div>
+    <!-- <div class="copyrightSection">
+        <div class="col-md-12 text-center">
+            <p>
+                &copy;2022 Rodson EBANGA
+            </p>
+        </div>
+    </div> -->
+<canvas></canvas>
+    <audio id="🔊" class="play-music" src="assets/music/Mariah Carey - All I Want for Christmas Is You.mp3?dl=0" controls autoplay loop autostart>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Script-->
+    <script>
+        window.addEventListener("load", function() {
+            setTimeout(
+                function open(event) {
+                    document.querySelector(".popup").style.display = "block";
+                },
+                2000
+            )
+        });
+
+
+        document.querySelector("#close").addEventListener("click", function() {
+            document.querySelector(".popup").style.display = "none";
+        });
+    </script>
+
+    <script>
+        let calcScrollValue = () => {
+            let scrollProgress = document.getElementById("progress");
+            let progressValue = document.getElementById("progress-value");
+            let pos = document.documentElement.scrollTop;
+            let calcHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+            let scrollValue = Math.round((pos * 100) / calcHeight);
+            if (pos > 100) {
+                scrollProgress.style.display = "grid";
+            } else {
+                scrollProgress.style.display = "none";
+            }
+            scrollProgress.addEventListener("click", () => {
+                document.documentElement.scrollTop = 0;
+            });
+            scrollProgress.style.background = `conic-gradient(#03cc65 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+        };
+
+        window.onscroll = calcScrollValue;
+        window.onload = calcScrollValue;
+    </script>
+
+    <script>
+        var t = 0;
+        var c = document.querySelector("canvas");
+        var $ = c.getContext('2d');
+        c.width = window.innerWidth;
+        c.height = window.innerHeight;
+        $.fillStyle = 'hsla(0,0%,0%,1)';
+
+        window.addEventListener('resize', function() {
+            c.width = window.innerWidth;
+            c.height = window.innerHeight;
+        }, false);
+
+        function draw() {
+            $.globalCompositeOperation = 'source-over';
+            $.fillStyle = 'hsla(0,0%,0%,.1)';
+            $.fillRect(0, 0, c.width, c.height);
+            var foo, i, j, r;
+            foo = Math.sin(t) * 2 * Math.PI;
+            for (i = 0; i < 400; ++i) {
+                r = 400 * Math.sin(i * foo);
+                $.globalCompositeOperation = '';
+                $.fillStyle = 'hsla(' + i + 12 + ',100%, 60%,1)';
+                $.beginPath();
+                $.arc(Math.sin(i) * r + (c.width / 2),
+                    Math.cos(i) * r + (c.height / 2),
+                    1.5, 0, Math.PI * 2);
+                $.fill();
+
+            }
+            t += 0.000005;
+            return t %= 2 * Math.PI;
+
+        };
+
+        function run() {
+            window.requestAnimationFrame(run);
+            draw();
+        }
+        run();
+    </script>
+
+    <script type="text/javascript">
+        window.addEventListener("mouseover", play);
+        window.addEventListener("click", play);
+
+        function play() {
+            document.getElementById("🔊").play();
+        }
+    </script>
+</body>
+
+</html>
